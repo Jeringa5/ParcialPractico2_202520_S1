@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Movie } from '../Movie';
-import { moviesData } from '../moviesData';
+import { MovieService } from '../movie.service';
 
 @Component({
   selector: 'app-movie-list',
@@ -10,8 +10,10 @@ import { moviesData } from '../moviesData';
 })
 export class MovieListComponent implements OnInit {
   movies: Movie[] = [];
-  selected: Boolean = false;
+  selected: boolean = false;
   selectedMovie: Movie | null = null;
+
+  constructor(private movieService: MovieService) {}
 
   onSelect(movie: Movie) {
     this.selectedMovie = movie;
@@ -19,6 +21,8 @@ export class MovieListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.movies = moviesData;
+    this.movieService.getMovies().subscribe((movies) => {
+      this.movies = movies;
+    });
   }
 }
