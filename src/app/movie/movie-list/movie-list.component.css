@@ -1,3 +1,4 @@
+
 img.poster-img {
   max-width: 250px;
 }
@@ -9,4 +10,9 @@ tr:hover {
 
 thead {
   background-color: palevioletred;
+}
+
+.titulo{
+  background-color: rgb(125, 134, 255);
+  justify-content: center;
 }
